@@ -4,8 +4,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
-import { QuizCreateComponent } from './quizzes/quiz-create';
-import { QuizListComponent } from './quizzes/quiz-list';
+import { QuizCreateComponent } from './quizzes/quiz-create/quiz-create.component';
+import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HeaderComponent,
+    QuizCreateComponent,
+    QuizListComponent
   ],
   imports: [
     BrowserModule,
