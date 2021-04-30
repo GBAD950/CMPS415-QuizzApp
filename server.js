@@ -44,9 +44,6 @@ const onListening = () => {
   debug("Listening on " + bind);
 };
 
-require('./node/startup/db')();
-require('./node/startup/routes')(app);
-
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
@@ -54,3 +51,6 @@ const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port, () => console.log(`Listening on port ${port}...`));
+
+require('./node/startup/db')();
+require('./node/startup/routes')(app);
