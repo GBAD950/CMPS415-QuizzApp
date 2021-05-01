@@ -6,8 +6,11 @@
       {{ quiz.quizName }}
     </mat-expansion-panel-header>
     <p>{{ quiz.question1 }}</p>
-    <ul *ngFor="let option of quiz.selections1">
-      <li>{{ option.text }}</li>
+    <ul>
+      <li>{{ quiz.q1_select1.text }}</li>
+      <li>{{ quiz.q1_select2.text }}</li>
+      <li>{{ quiz.q1_select3.text }}</li>
+      <li>{{ quiz.q1_select4.text }}</li>
     </ul>
   </mat-expansion-panel>
 </mat-accordion>

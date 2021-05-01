@@ -3,6 +3,8 @@ const { Submit, validateSubmit } = require('../models/submit');
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const app = express();
+
 
 router.get('/', async (req, res) => {
     const quizzes = await Quiz.find().sort('tite');
@@ -13,20 +15,56 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/new', (req, res) => {
-    // const { error } = validate(req.body);
-    // if(error){return res.status(400).send(error.details[0].message);}
-
-
     console.log(req.body.quizName);
+    console.log(req.body.question1);
+    console.log(req.body.q1_select1);
+    console.log(req.body.q1_select2);
+    console.log(req.body.q1_select3);
+    console.log(req.body.q1_select4);
+
+    console.log(req.body.question2);
+    console.log(req.body.q2_select1);
+    console.log(req.body.q2_select2);
+    console.log(req.body.q2_select3);
+    console.log(req.body.q2_select4);
+
+    console.log(req.body.question3);
+    console.log(req.body.q3_select1);
+    console.log(req.body.q3_select2);
+    console.log(req.body.q3_select3);
+    console.log(req.body.q3_select4);
+
+    console.log(req.body.question4);
+    console.log(req.body.quest4_ans);
+
     const quiz = new Quiz({
-        quizName: req.body.quizName,
-        question1: req.body.question1,
-        selections1: req.body.selections1,
-        // question2: req.body.question2,
-        // selections2: req.body.selections2
+      quizName: req.body.quizName,
+
+      question1: req.body.question1,
+      q1_select1: req.body.q1_select1,
+      q1_select2: req.body.q1_select2,
+      q1_select3: req.body.q1_select3,
+      q1_select4: req.body.q1_select4,
+
+      question2: req.body.question2,
+      q2_select1: req.body.q2_select1,
+      q2_select2: req.body.q2_select2,
+      q2_select3: req.body.q2_select3,
+      q2_select4: req.body.q2_select4,
+
+      question3: req.body.question3,
+      q3_select1: req.body.q3_select1,
+      q3_select2: req.body.q3_select2,
+      q3_select3: req.body.q3_select3,
+      q3_select4: req.body.q3_select4,
+
+      question4: req.body.question4,
+      quest4_ans: req.body.quest4_ans
     });
+
     console.log('Before save');
-    quiz.save().then(result => {
+
+   quiz.save().then(result => {
       console.log(result);
       res.status(201).json({
         message: 'Post added successfully',
