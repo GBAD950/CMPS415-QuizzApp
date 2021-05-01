@@ -6,35 +6,36 @@ const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     const quizzes = await Quiz.find().sort('tite');
-    res.send(quizzes);
-});
-
-router.post('/new', async (req, res) => {
-    const { error } = validate(req.body);
-    if(error){return res.status(400).send(error.details[0].message);}
-
-   try{
-    const quiz = new Quiz({ 
-        title1: req.body.title1,
-        title2: req.body.title2,
-        title3: req.body.title3,
-        title4: req.body.title4,
-        question1: req.body.question1,        
-        question2: req.body.question2,        
-        question3: req.body.question3,        
-        question4: req.body.question4        
+    res.status(200).json({
+      message: 'quizzes fetched successfully',
+      quizzes: quizzes
     });
-    await quiz.save();
-
-    res.send(quiz);
-   }
-
-   catch (ex) {
-    res.status(500).send('Something Failed...');
-  }  
 });
 
-router.post('/quiz/:id', async (req, res) => { 
+router.post('/new', (req, res) => {
+    // const { error } = validate(req.body);
+    // if(error){return res.status(400).send(error.details[0].message);}
+
+
+    console.log(req.body.quizName);
+    const quiz = new Quiz({
+        quizName: req.body.quizName,
+        question1: req.body.question1,
+        selections1: req.body.selections1,
+        // question2: req.body.question2,
+        // selections2: req.body.selections2
+    });
+    console.log('Before save');
+    quiz.save().then(result => {
+      console.log(result);
+      res.status(201).json({
+        message: 'Post added successfully',
+        quizId: result._id
+      });
+    });
+});
+
+router.post('/quiz/:id', async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(req.params.id))
     return res.status(400).send('quiz not found');
 
@@ -56,17 +57,17 @@ router.post('/quiz/:id', async (req, res) => {
         let i = 0, len1 = quiz.question1.length;
         for(i; i<len1; i++){
             if((submit.answer1 === quiz.question1[i].text) && (quiz.question1[i].isCorrect === true)){
-                submit.correct++;                
+                submit.correct++;
             }
         }
-        
+
         let len2 = quiz.question2.length;
         i = 0;
         for(i; i<len2; i++){
             if((submit.answer2 === quiz.question2[i].text) && (quiz.question2[i].isCorrect === true)){
-                submit.correct++;          
+                submit.correct++;
             }
-                     
+
         }
 
         let len3 = quiz.question3.length;
@@ -74,36 +75,36 @@ router.post('/quiz/:id', async (req, res) => {
         let j = 0, correctAns = 0, correctSubmit = 0;
         i = 0;
         for(i; i<len3; i++){
-            if(quiz.question3[i].isCorrect === true){ 
+            if(quiz.question3[i].isCorrect === true){
                 correctAns++;
             }
             for(j; j<_len3; j++){
                 if((submit.answer3[j].text === quiz.question3[i].text) && (quiz.question3[i].isCorrect === true)){
-                    correctSubmit++;                    
+                    correctSubmit++;
                 }
             }
 
             j = 0;
-        }       
+        }
 
         if(correctSubmit === correctAns){
             submit.correct++;
         }
 
-        if(submit.answer4 === quiz.question4){            
+        if(submit.answer4 === quiz.question4){
             submit.correct++;
         }
 
         submit.grade = (submit.correct / 4) * 100;
 
-        await submit.save()    
+        await submit.save()
         res.send(submit);
-      
+
    }
 
    catch (ex) {
     res.status(500).send('Something Failed...');
-    }  
+    }
 });
 
 router.get('/:id', async (req, res) => {
@@ -113,7 +114,10 @@ router.get('/:id', async (req, res) => {
     const quiz = await Quiz.findById( req.params.id);
     if(!quiz){return res.status(404).send('quiz not found');}
 
-    else res.send(quiz);
+    else res.json({
+      message: 'quiz fetched successfully',
+      quizzes: quiz
+    });
 });
 
 module.exports = router;

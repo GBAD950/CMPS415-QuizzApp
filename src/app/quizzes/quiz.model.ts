@@ -1,25 +1,20 @@
 export interface Quiz {
-  title1: string,
-  question1: [
+  _id: any,
+  quizName: string,
+  question1: string,
+  selections1: [
     {
+      _id: string,
       text:string,
       isCorrect:boolean
     }
   ],
-  title2: string,
-  question2: [
-    {
-      text:string,
-      isCorrect:boolean
-    }
-  ],
-  title3: string,
-  question3: [
-    {
-      text:string,
-      isCorrect:boolean
-    }
-  ],
-  title4:string,
-  question4: string
+  // question2: string,
+  // selections2: [
+  //   {
+  //     _id: string,
+  //     text:string,
+  //     isCorrect:boolean
+  //   }
+  // ]
 }
