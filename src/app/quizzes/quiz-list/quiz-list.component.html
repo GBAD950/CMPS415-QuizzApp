@@ -1,16 +1,42 @@
 <h1> Quiz List </h1>
 
-<mat-accordion multi="true" *ngFor="let quiz of quizzes">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      {{ quiz.quizName }}
-    </mat-expansion-panel-header>
-    <p>{{ quiz.question1 }}</p>
-    <ul>
-      <li>{{ quiz.q1_select1.text }}</li>
-      <li>{{ quiz.q1_select2.text }}</li>
-      <li>{{ quiz.q1_select3.text }}</li>
-      <li>{{ quiz.q1_select4.text }}</li>
-    </ul>
-  </mat-expansion-panel>
-</mat-accordion>
+<div *ngIf="quizzes.length > 0">
+  <mat-accordion multi="true" *ngFor="let quiz of quizzes">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        {{ quiz.quizName }}
+      </mat-expansion-panel-header>
+      <p>{{ quiz.question1 }}</p>
+      <ul>
+        <li>{{ quiz.q1_select1.text }}</li>
+        <li>{{ quiz.q1_select2.text }}</li>
+        <li>{{ quiz.q1_select3.text }}</li>
+        <li>{{ quiz.q1_select4.text }}</li>
+      </ul>
+      <p>{{ quiz.question2 }}</p>
+      <ul>
+        <li>{{ quiz.q2_select1.text }}</li>
+        <li>{{ quiz.q2_select2.text }}</li>
+        <li>{{ quiz.q2_select3.text }}</li>
+        <li>{{ quiz.q2_select4.text }}</li>
+      </ul>
+      <p>{{ quiz.question3 }}</p>
+      <ul>
+        <li>{{ quiz.q3_select1.text }}</li>
+        <li>{{ quiz.q3_select2.text }}</li>
+        <li>{{ quiz.q3_select3.text }}</li>
+        <li>{{ quiz.q3_select4.text }}</li>
+      </ul>
+      <p>{{ quiz.question4 }}</p>
+      <ul>
+        <li>{{ quiz.quest4_ans }}</li>
+        <li>{{ quiz._id }}</li>
+      </ul>
+      <mat-action-row>
+        <button mat-button color="primary" [routerLink]="['/take', quiz._id]" >Take Quiz</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<p class="info-text"*ngIf="quizzes.length < 1">No quizzes yet!</p>

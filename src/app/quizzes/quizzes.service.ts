@@ -1,22 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators';
 
 import { Quiz } from './quiz.model';
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
-  private quizzes: Quiz[] = [];
-  private quizUpdated = new Subject<Quiz[]>();
+  [x: string]: any;
+  public quizzes: Quiz[] = [];
+  public quizUpdated = new Subject<Quiz[]>();
+
+  newQuiz : Quiz = {
+    _id: '',
+  quizName:  "",
+  question1: "",
+  q1_select1: { text: '', isCorrect: false },
+  q1_select2: { text: '', isCorrect: false },
+  q1_select3: { text: '', isCorrect: false },
+  q1_select4: { text: '', isCorrect: false },
+  question2: "",
+  q2_select1: { text: '', isCorrect: false },
+  q2_select2: { text: '', isCorrect: false },
+  q2_select3: { text: '', isCorrect: false },
+  q2_select4: { text: '', isCorrect: false },
+  question3: "",
+  q3_select1: { text: '', isCorrect: false },
+  q3_select2: { text: '', isCorrect: false },
+  q3_select3: { text: '', isCorrect: false },
+  q3_select4: { text: '', isCorrect: false },
+  question4 : "",
+  quest4_ans: ""
+};
 
   constructor(private http: HttpClient){}
 
   getQuizzes(){
     this.http
-      .get<{message: string, quizzes: Quiz[]}>(
-        'http://localhost:3000/api/quizzes'
-        )
+      .get<{message: string, quizzes: Quiz[]}>('/api/quizzes')
         .pipe(map((quizData) => {
           return quizData.quizzes.map((quiz) => {
             return {
@@ -51,12 +73,19 @@ export class QuizService {
     });
   }
 
+  openQuiz(quizId : string | null){
+    console.log('We are in openQuiz  ' + quizId);
+    let quiz = {...this.quizzes.find(q => q._id === quizId)};
+    console.log(quiz.q1_select1);
+    return quiz;
+  }
+
   getQuizUpdateListener() {
     return this.quizUpdated.asObservable();
   }
 
   addQuiz(quiz: Quiz){
-    this.http.post<{message: string, quizId: string}>('http://localhost:3000/api/quizzes/new', quiz)
+    this.http.post<{message: string, quizId: string}>('/api/quizzes/new', quiz)
       .subscribe((quizData) => {
         const id = quizData.quizId;
         quiz._id = id;

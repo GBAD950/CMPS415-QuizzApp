@@ -1,1 +1,59 @@
-<h1>Single quiz</h1>
+<h1>Quiz: {{ quiz.quizName }}</h1>
+<h1> {{ quiz.q3_select1.isCorrect }}</h1>
+
+<mat-card>
+    <form (submit)="onSubmit(quizSubmit)" #quizSubmit="ngForm">
+        <!-- Question 1 -->
+      <table>
+        <th>{{ quiz.question1 }}</th>
+        <tr>
+          <td>
+            <mat-radio-group  name="question1" [(ngModel)]="question1">
+              <mat-radio-button name="question1" color="primary" [value]='quiz.q1_select1.isCorrect'>{{ quiz.q1_select1.text }}</mat-radio-button>
+              <mat-radio-button name="question1" color="primary" [value]='quiz.q1_select2.isCorrect'>{{ quiz.q1_select2.text }}</mat-radio-button>
+              <mat-radio-button name="question1" color="primary" [value]='quiz.q1_select3.isCorrect'>{{ quiz.q1_select3.text }}</mat-radio-button>
+              <mat-radio-button name="question1" color="primary" [value]='quiz.q1_select4.isCorrect'>{{ quiz.q1_select4.text }}</mat-radio-button>
+            </mat-radio-group>
+          </td>
+        </tr>
+      </table>
+     <!-- Question 2 -->
+     <table>
+      <th>{{ quiz.question2 }}</th>
+      <tr>
+        <td>
+          <mat-radio-group  name="question2" [(ngModel)]="question2">
+            <mat-radio-button name="question2" color="primary" [value]='quiz.q2_select1.isCorrect'>{{ quiz.q2_select1.text }}</mat-radio-button>
+            <mat-radio-button name="question2" color="primary" [value]='quiz.q2_select2.isCorrect'>{{ quiz.q2_select2.text }}</mat-radio-button>
+            <mat-radio-button name="question2" color="primary" [value]='quiz.q2_select3.isCorrect'>{{ quiz.q2_select3.text }}</mat-radio-button>
+            <mat-radio-button name="question2" color="primary" [value]='quiz.q2_select4.isCorrect'>{{ quiz.q2_select4.text }}</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+    </table>
+    <!-- Question 3 -->
+    <table>
+      <th>{{ quiz.question3 }}</th>
+      <tr>
+        <td>
+          <mat-radio-group name="question3" [(ngModel)]="question3">
+            <mat-radio-button name="question3" color="primary" [value]='quiz.q3_select1.isCorrect'>{{ quiz.q3_select1.text }}</mat-radio-button>
+            <mat-radio-button name="question3" color="primary" [value]='quiz.q3_select2.isCorrect'>{{ quiz.q3_select2.text }}</mat-radio-button>
+            <mat-radio-button name="question3" color="primary" [value]='quiz.q3_select3.isCorrect'>{{ quiz.q3_select3.text }}</mat-radio-button>
+            <mat-radio-button name="question3" color="primary" [value]='quiz.q3_select4.isCorrect'>{{ quiz.q3_select4.text }}</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+    </table>
+      <table>
+        <th>{{ quiz.question4 }}</th>
+        <tr>
+          <mat-form-field>
+            <textarea matInput rows="3" name="question4" ngModel required placeholder="Short Answer" #content="ngModel"> </textarea>
+            <mat-error *ngIf="content.invalid">Please type something here</mat-error>
+          </mat-form-field>
+        </tr>
+      </table>
+      <button mat-raised-button color = "accent" type="submit">Submit Quiz</button>
+  </form>
+</mat-card>

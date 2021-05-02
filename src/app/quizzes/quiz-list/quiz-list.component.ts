@@ -26,4 +26,5 @@ export class QuizListComponent {
   ngOnDestroy() {
     this.quizSub.unsubscribe();
   }
+
 }

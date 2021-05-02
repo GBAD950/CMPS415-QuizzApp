@@ -6,37 +6,16 @@ const mongoose = require('mongoose');
 const app = express();
 
 
-router.get('/', async (req, res) => {
-    const quizzes = await Quiz.find().sort('tite');
-    res.status(200).json({
-      message: 'quizzes fetched successfully',
-      quizzes: quizzes
-    });
+router.get('/', (req, res) => {
+  Quiz.find().then( docs => {
+  res.status(200).json({
+    message: 'quizzes fetched successfully',
+    quizzes: docs
+  })
+});
 });
 
 router.post('/new', (req, res) => {
-    console.log(req.body.quizName);
-    console.log(req.body.question1);
-    console.log(req.body.q1_select1);
-    console.log(req.body.q1_select2);
-    console.log(req.body.q1_select3);
-    console.log(req.body.q1_select4);
-
-    console.log(req.body.question2);
-    console.log(req.body.q2_select1);
-    console.log(req.body.q2_select2);
-    console.log(req.body.q2_select3);
-    console.log(req.body.q2_select4);
-
-    console.log(req.body.question3);
-    console.log(req.body.q3_select1);
-    console.log(req.body.q3_select2);
-    console.log(req.body.q3_select3);
-    console.log(req.body.q3_select4);
-
-    console.log(req.body.question4);
-    console.log(req.body.quest4_ans);
-
     const quiz = new Quiz({
       quizName: req.body.quizName,
 
@@ -145,11 +124,11 @@ router.post('/quiz/:id', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(req.params.id))
     return res.status(400).send('quiz not found');
 
-    const quiz = await Quiz.findById( req.params.id);
+    Quiz.findById( req.params.id);
     if(!quiz){return res.status(404).send('quiz not found');}
 
     else res.json({
