@@ -44,6 +44,12 @@ export class QuizTakeComponent implements OnInit{
     if(form.value.question4 === this.quiz.quest4_ans) {
       this.totCorrect = this.totCorrect + 1;
     }
+
+    console.log(this.question1);
+    console.log(this.question2);
+    console.log(this.question3);
+    console.log(this.totCorrect);
+
     this.router.navigate(['/submit', this.totCorrect]);
   }
 }

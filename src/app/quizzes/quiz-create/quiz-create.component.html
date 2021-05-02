@@ -6,8 +6,8 @@
       <input matInput type="text" name="quizName" ngModel required minlength="2" placeholder="Quiz Title" #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a quiz name</mat-error>
     </mat-form-field>
-    <!-- Question 1  -->
-    <mat-form-field>
+     <!-- Question 1  -->
+     <mat-form-field>
       <input matInput type="text" name="question1" ngModel required minlength="2" placeholder="Question" #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a quiz name</mat-error>
     </mat-form-field>
@@ -15,109 +15,109 @@
     <mat-form-field>
       <textarea matInput rows="3" name="q1_txt_1" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest1_opt1" [(ngModel)]="quest1_Ans1">
         <mat-radio-button name="q1_correct_1" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q1_correct_1" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q1_txt_2" ngModel required placeholder="Option 2" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q1_txt_2" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest1_opt2" [(ngModel)]="quest1_Ans2">
         <mat-radio-button name="q1_correct_2" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q1_correct_2" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q1_txt_3" ngModel required placeholder="Option 3" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q1_txt_3" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest1_opt3" [(ngModel)]="quest1_Ans3">
         <mat-radio-button name="q1_correct_3" color="primary" value="true">True</mat-radio-button>
         <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q1_txt_4" ngModel required placeholder="Option 4" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q1_txt_4" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest1_opt4" [(ngModel)]="quest1_Ans4">
         <mat-radio-button name="q1_correct_4" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q1_correct_4" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
-    <!-- Question 2 -->
-    <mat-form-field>
-      <input matInput type="text" name="question2" ngModel required minlength="2" placeholder="Question 2" #title="ngModel">
+     <!-- Question 2  -->
+     <mat-form-field>
+      <input matInput type="text" name="question2" ngModel required minlength="2" placeholder="Question" #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a quiz name</mat-error>
     </mat-form-field>
     <!-- Question 2 selections -->
     <mat-form-field>
       <textarea matInput rows="3" name="q2_txt_1" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest2_opt1" [(ngModel)]="quest2_Ans1">
         <mat-radio-button name="q2_correct_1" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q2_correct_1" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q2_txt_2" ngModel required placeholder="Option 2" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q2_txt_2" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest2_opt2" [(ngModel)]="quest2_Ans2">
         <mat-radio-button name="q2_correct_2" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q2_correct_2" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q2_txt_3" ngModel required placeholder="Option 3" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q2_txt_3" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest2_opt3" [(ngModel)]="quest2_Ans3">
         <mat-radio-button name="q2_correct_3" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q2_correct_3" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q2_txt_4" ngModel required placeholder="Option 4" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q2_txt_4" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest2_opt4" [(ngModel)]="quest2_Ans4">
         <mat-radio-button name="q2_correct_4" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q2_correct_4" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
-    <!-- Question 3 -->
-    <mat-form-field>
-      <input matInput type="text" name="question3" ngModel required minlength="2" placeholder="Question 3" #title="ngModel">
+     <!-- Question 3  -->
+     <mat-form-field>
+      <input matInput type="text" name="question3" ngModel required minlength="2" placeholder="Question" #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter a quiz name</mat-error>
     </mat-form-field>
     <!-- Question 3 selections -->
     <mat-form-field>
       <textarea matInput rows="3" name="q3_txt_1" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest3_opt1" [(ngModel)]="quest3_Ans1">
         <mat-radio-button name="q3_correct_1" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q3_correct_1" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q3_txt_2" ngModel required placeholder="Option 2" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q3_txt_2" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest3_opt2" [(ngModel)]="quest3_Ans2">
         <mat-radio-button name="q3_correct_2" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q3_correct_2" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q3_txt_3" ngModel required placeholder="Option 3" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q3_txt_3" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest3_opt3" [(ngModel)]="quest3_Ans3">
         <mat-radio-button name="q3_correct_3" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q3_correct_3" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput rows="3" name="q3_txt_4" ngModel required placeholder="Option 4" #content="ngModel"> </textarea>
+      <textarea matInput rows="3" name="q3_txt_4" ngModel required placeholder="Option 1" #content="ngModel"> </textarea>
       <mat-error *ngIf="content.invalid">Please type something here</mat-error>
-      <mat-radio-group>
+      <mat-radio-group name="quest3_opt4" [(ngModel)]="quest3_Ans4">
         <mat-radio-button name="q3_correct_4" color="primary" value="true">True</mat-radio-button>
-        <mat-radio-button name="q1_correct_3" color="primary" value="false">False</mat-radio-button>
+        <mat-radio-button name="q3_correct_4" color="primary" value="false">False</mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
     <!-- Question 4 -->

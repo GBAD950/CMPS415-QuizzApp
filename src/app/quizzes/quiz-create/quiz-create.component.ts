@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Quiz } from '../quiz.model';
 import { QuizService } from '../quizzes.service';
 
@@ -31,7 +32,22 @@ export class QuizCreateComponent {
     quest4_ans: ""
   };
 
-  constructor(public quizService: QuizService){}
+  quest1_Ans1 : string = '';
+  quest1_Ans2 : string = '';
+  quest1_Ans3 : string = '';
+  quest1_Ans4 : string = '';
+
+  quest2_Ans1 : string = '';
+  quest2_Ans2 : string = '';
+  quest2_Ans3 : string = '';
+  quest2_Ans4 : string = '';
+
+  quest3_Ans1 : string = '';
+  quest3_Ans2 : string = '';
+  quest3_Ans3 : string = '';
+  quest3_Ans4 : string = '';
+
+  constructor(public quizService: QuizService, public router: Router){}
 
   onCreateQuiz(form: NgForm){
     if( form.invalid ){ return; }
@@ -58,59 +74,72 @@ export class QuizCreateComponent {
     this.newQuiz.question4 = form.value.question4;
     this.newQuiz.quest4_ans = form.value.quest4_ans;
 
-    if(form.value.q1_correct_1 === true){
+    if(this.quest1_Ans1 === 'true'){
       this.newQuiz.q1_select1.isCorrect = true;
     }
     else { this.newQuiz.q1_select1.isCorrect = false; }
-    if(form.value.q1_correct_2 === true){
+
+    if(this.quest1_Ans2 === 'true'){
       this.newQuiz.q1_select2.isCorrect = true;
     }
     else { this.newQuiz.q1_select2.isCorrect = false; }
-    if(form.value.q1_correct_3 === true){
+
+    if(this.quest1_Ans3 === 'true'){
       this.newQuiz.q1_select3.isCorrect = true;
     }
     else { this.newQuiz.q1_select3.isCorrect = false; }
-    if(form.value.q1_correct_4 === true){
+
+    if(this.quest1_Ans4 === 'true'){
       this.newQuiz.q1_select4.isCorrect = true;
     }
     else { this.newQuiz.q1_select4.isCorrect = false; }
 
-    if(form.value.q2_correct_1 === true){
+
+
+    if(this.quest2_Ans1 === 'true'){
       this.newQuiz.q2_select1.isCorrect = true;
     }
     else { this.newQuiz.q2_select1.isCorrect = false; }
-    if(form.value.q2_correct_2 === true){
+
+    if(this.quest2_Ans2 === 'true'){
       this.newQuiz.q2_select2.isCorrect = true;
     }
     else { this.newQuiz.q2_select2.isCorrect = false; }
-    if(form.value.q2_correct_3 === true){
+
+    if(this.quest2_Ans3 === 'true'){
       this.newQuiz.q2_select3.isCorrect = true;
     }
     else { this.newQuiz.q2_select3.isCorrect = false; }
-    if(form.value.q2_correct_4 === true){
+
+    if(this.quest2_Ans4 === 'true'){
       this.newQuiz.q2_select4.isCorrect = true;
     }
     else { this.newQuiz.q2_select4.isCorrect = false; }
 
-    if(form.value.q3_correct_1 === true){
+
+    if(this.quest3_Ans1 === 'true'){
       this.newQuiz.q3_select1.isCorrect = true;
     }
     else { this.newQuiz.q3_select1.isCorrect = false; }
-    if(form.value.q3_correct_2 === true){
+
+    if(this.quest3_Ans2 === 'true'){
       this.newQuiz.q3_select2.isCorrect = true;
     }
     else { this.newQuiz.q3_select2.isCorrect = false; }
-    if(form.value.q3_correct_3 === true){
+
+    if(this.quest3_Ans3 === 'true'){
       this.newQuiz.q3_select3.isCorrect = true;
     }
     else { this.newQuiz.q3_select3.isCorrect = false; }
-    if(form.value.q3_correct_4 === true){
+
+    if(this.quest3_Ans4 === 'true'){
       this.newQuiz.q3_select4.isCorrect = true;
     }
     else { this.newQuiz.q3_select4.isCorrect = false; }
 
     this.quizService.addQuiz(this.newQuiz);
     form.resetForm();
+    this.router.navigate(['/']);
   }
 
 }

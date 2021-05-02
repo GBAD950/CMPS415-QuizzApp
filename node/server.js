@@ -1,7 +1,12 @@
 const express = require('express');
+const path = require('path');
 const debug = require("debug")("node-angular");
+const quizzes = require('./routes/quizzes');
+const submissions = require('./routes/submissions');
 const http = require("http");
 const app = express();
+
+app.use("/", express.static(path.join(__dirname, 'angular')));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -57,13 +62,18 @@ const onListening = () => {
   debug("Listening on " + bind);
 };
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.set("port", port);
 
 const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port, () => console.log(`Listening on port ${port}...`));
+require('./startup/db')();
 
-require('./node/startup/db')();
-require('./node/startup/routes')(app);
+app.use(express.json()); // middleware
+  app.use('/api/quizzes', quizzes);
+  app.use('/api/submissions', submissions);
+  app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "angular", "index.html"));
+  });

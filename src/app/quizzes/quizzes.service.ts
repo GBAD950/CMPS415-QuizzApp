@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { Observable } from 'rxjs'
+import { environment } from '../../environments/environment'
 import { map } from 'rxjs/operators';
 
 import { Quiz } from './quiz.model';
+
+const url = "http://cmps415rwr-env.eba-xme7xem2.us-east-2.elasticbeanstalk.com/api"
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
@@ -38,7 +40,7 @@ export class QuizService {
 
   getQuizzes(){
     this.http
-      .get<{message: string, quizzes: Quiz[]}>('api/quizzes')
+      .get<{message: string, quizzes: Quiz[]}>(url + '/quizzes')
         .pipe(map((quizData) => {
           return quizData.quizzes.map((quiz) => {
             return {
@@ -74,7 +76,9 @@ export class QuizService {
   }
 
   openQuiz(quizId : string | null){
+    console.log('We are in openQuiz  ' + quizId);
     let quiz = {...this.quizzes.find(q => q._id === quizId)};
+    console.log(quiz.q1_select1);
     return quiz;
   }
 
@@ -83,7 +87,7 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz){
-    this.http.post<{message: string, quizId: string}>('api/quizzes/new', quiz)
+    this.http.post<{message: string, quizId: string}>(url + '/quizzes/new', quiz)
       .subscribe((quizData) => {
         const id = quizData.quizId;
         quiz._id = id;
