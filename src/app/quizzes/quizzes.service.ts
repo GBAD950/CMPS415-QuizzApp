@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { Quiz } from './quiz.model';
 
-const url = "http://cmps415rwr-env.eba-xme7xem2.us-east-2.elasticbeanstalk.com/api"
+const url = "https://young-sierra-69581.herokuapp.com/api"
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
