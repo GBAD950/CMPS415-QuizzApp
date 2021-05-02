@@ -6,7 +6,7 @@ const submissions = require('./routes/submissions');
 const http = require("http");
 const app = express();
 
-//app.use("/", express.static(path.join(__dirname, 'angular')));
+app.use("/", express.static(path.join(__dirname, 'angular')));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -74,6 +74,6 @@ require('./startup/db')();
 app.use(express.json()); // middleware
   app.use('/api/quizzes', quizzes);
   app.use('/api/submissions', submissions);
-  // app.use((req, res, next) => {
-  //   res.sendFile(path.join(__dirname, "angular", "index.html"));
-  // });
+  app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "angular", "index.html"));
+  });

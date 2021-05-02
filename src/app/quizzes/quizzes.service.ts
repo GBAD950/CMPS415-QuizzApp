@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { Quiz } from './quiz.model';
 
-const url = "https://cmps415quizzapp.herokuapp.com/api"
+const url = "http://localhost:3000//api"
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
