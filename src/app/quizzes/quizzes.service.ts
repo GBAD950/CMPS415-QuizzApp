@@ -38,7 +38,7 @@ export class QuizService {
 
   getQuizzes(){
     this.http
-      .get<{message: string, quizzes: Quiz[]}>('young-sierra-69581.herokuapp.com/api/quizzes')
+      .get<{message: string, quizzes: Quiz[]}>('api/quizzes')
         .pipe(map((quizData) => {
           return quizData.quizzes.map((quiz) => {
             return {
@@ -74,9 +74,7 @@ export class QuizService {
   }
 
   openQuiz(quizId : string | null){
-    console.log('We are in openQuiz  ' + quizId);
     let quiz = {...this.quizzes.find(q => q._id === quizId)};
-    console.log(quiz.q1_select1);
     return quiz;
   }
 
@@ -85,7 +83,7 @@ export class QuizService {
   }
 
   addQuiz(quiz: Quiz){
-    this.http.post<{message: string, quizId: string}>('young-sierra-69581.herokuapp.com/api/quizzes/new', quiz)
+    this.http.post<{message: string, quizId: string}>('api/quizzes/new', quiz)
       .subscribe((quizData) => {
         const id = quizData.quizId;
         quiz._id = id;
